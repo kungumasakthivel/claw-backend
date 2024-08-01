@@ -39,13 +39,17 @@ userRouter.post('/register', async(req, res) => {
 
 userRouter.post('/login', async(req, res) => {
     const {email, password} = req.body;
+
+    let option = {
+        expiresIn: "120m"
+    }
     
     try {
         let data = await UserModel.find({email})
         // console.log(data)
         console.log(data.length > 0)
         if(data.length > 0) {
-            let token = jwt.sign({userId: data[0]._id}, 'manish')
+            let token = jwt.sign({userId: data[0]._id}, 'manish', option)
             bcrypt.compare(password, data[0].password, function(err, result) {
                 console.log(token)
                 if(err) {

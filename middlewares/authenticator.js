@@ -10,6 +10,7 @@ function authenticator(req, res, next) {
                 status: 2
             })
         }
+        console.log(decode)
         if(decode) {
             req.body.user = decode.userId
             next()
