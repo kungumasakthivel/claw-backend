@@ -5,8 +5,17 @@ const jwt = require('jsonwebtoken');
 
 const userRouter = express.Router();
 
-userRouter.post('/signup', async(req, res) => {
+userRouter.post('/register', async(req, res) => {
     const {name, email, password} = req.body;
+
+    let data = await UserModel.findOne({email})
+    // console.log(data);
+    if(data) {
+        return res.status(400).json({
+            message: 'user already registered',
+            status: 0
+        })
+    }
 
     bcrypt.hash(password, 5, async function(err, hash) {
         if(err) {
@@ -28,12 +37,12 @@ userRouter.post('/signup', async(req, res) => {
     })
 })
 
-userRouter.post('/signin', async(req, res) => {
+userRouter.post('/login', async(req, res) => {
     const {email, password} = req.body;
     
     try {
         let data = await UserModel.find({email})
-        console.log(data)
+        // console.log(data)
         console.log(data.length > 0)
         if(data.length > 0) {
             let token = jwt.sign({userId: data[0]._id}, 'manish')
