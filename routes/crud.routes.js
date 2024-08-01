@@ -25,9 +25,9 @@ crudRouter.get('/', async(req, res) => {
 })
 
 crudRouter.post('/create', async(req, res) => {
-    const {title, description} = req.body;
+    // const {title, description, user} = req.body;
     try {
-        let note = new CrudModel({title: title, description: description});
+        let note = new CrudModel(req.body);
         await note.save();
         res.send({
             message: 'created successfully',
@@ -43,9 +43,9 @@ crudRouter.post('/create', async(req, res) => {
 
 crudRouter.patch('/', async(req, res) => {
     let {id} = req.headers;
-    const {title, description} = req.body;
+    // const {title, description} = req.body;
     try {
-        await CrudModel.findByIdAndUpdate({_id: id}, {title: title, description: description})
+        await CrudModel.findByIdAndUpdate({_id: id}, req.body)
         res.send({
             message: 'Updated successfully',
             status: 1 
