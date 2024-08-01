@@ -7,30 +7,21 @@ const crudRouter = express.Router();
 crudRouter.use(authenticator)
 
 crudRouter.get('/', async(req, res) => {
-    let token = req.headers.authenticator;
-    jwt.verify(token, 'manish', async(err, decode) => {
-        console.log(decode);
-
-        if(err) {
-            return res.send({
-                message: 'error in get data, ERROR: ' + err.message,
-                status: 0
-            })
-        }
-        try {
-            let data = await CrudModel.find({user:decode.userId})
-            res.send({
-                data: data,
-                message: 'success',
-                status: 1
-            })
-        } catch (err) {
-            res.send({
-                message: err.message,
-                status: 0
-            })
-        }
-    })
+    console.log(req.body.user)
+    try {
+        let data = await CrudModel.find({user:req.body.user})
+        res.send({
+            data: data,
+            message: 'success',
+            status: 1
+        })
+    } catch (err) {
+        res.send({
+            message: err.message,
+            status: 0
+        })
+    }
+    
 })
 
 crudRouter.post('/create', async(req, res) => {
