@@ -41,7 +41,7 @@ userRouter.post('/login', async(req, res) => {
     const {email, password} = req.body;
 
     let option = {
-        expiresIn: "120m"
+        expiresIn: "120d"
     }
     
     try {

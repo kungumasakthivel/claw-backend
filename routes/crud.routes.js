@@ -52,8 +52,9 @@ crudRouter.post('/create', async(req, res) => {
 
 crudRouter.patch('/', async(req, res) => {
     let {id} = req.headers;
+    const {title, description} = req.body;
     try {
-        await CrudModel.findByIdAndUpdate({_id: id}, req.body)
+        await CrudModel.findByIdAndUpdate({_id: id}, {title: title, description: description})
         res.send({
             message: 'Updated successfully',
             status: 1 
