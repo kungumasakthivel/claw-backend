@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { authenticator } = require('../middlewares/authenticator');
-const { CrudModel } = require('../models/UrudModel');
+const { CrudModel } = require('../models/CrudModel');
 const crudRouter = express.Router();
 crudRouter.use(authenticator)
 
