@@ -26,8 +26,9 @@ crudRouter.get('/', async(req, res) => {
 })
 
 crudRouter.post('/create', async(req, res) => {
+    const {title, description} = req.body;
     try {
-        let note = new CrudModel(req.body);
+        let note = new CrudModel({title: title, description: description});
         await note.save();
         res.send({
             message: 'created successfully',

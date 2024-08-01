@@ -9,6 +9,4 @@ const CrudSchema = mongoose.Schema({
 
 const CrudModel = mongoose.model("crud", CrudSchema);
 
-module.exports = {
-    CrudModel
-}
+module.exports = {CrudModel};
