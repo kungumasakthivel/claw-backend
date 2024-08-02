@@ -21,6 +21,20 @@
 *                type: string 
 *                required: true
 *                description: Password of the user
+*       Login: 
+*           type: object
+*           required:
+*               - email
+*               - password
+*           properties:
+*              email:
+*                type: string 
+*                required: true
+*                description: Email of the user
+*              password: 
+*                type: string 
+*                required: true
+*                description: Password of the user
 */
 
 /**
@@ -48,21 +62,21 @@
  * 
  * /user/login:
  *   post:
- *     summary: Login API
- *     tags: [Login]
+ *     summary: login API
+ *     tags: [login]
  *     requestBody:
  *       required: true
  *       content: 
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/UserModel'
+ *             $ref: '#/components/schemas/Login'
  *     responses:
  *       200:
  *         description: User Logedin
  *         contens:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/UserModel'
+ *               $ref: '#/components/schemas/Login'
  *       400:
  *         description: User Already Exist        
  *  
