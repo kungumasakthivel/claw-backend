@@ -19,8 +19,13 @@ POST method
 Using this format we can able to pass the data to this endpoint.
 
 ```json
-
+{
+  "message": "user created successfully",
+  "status": 1
+}
 ```
+
+This will be the responce we an user created successfully.
 
 
 ### Login API 
