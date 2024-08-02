@@ -1,3 +1,75 @@
+/**
+*@swagger
+*components:
+*   schemas:
+*       UserModel: 
+*           type: object
+*           required:
+*               - name
+*               - email
+*               - password
+*           properties:
+*              name:
+*                type: string   
+*                required: true
+*                description: Name of the user
+*              email:
+*                type: string 
+*                required: true
+*                description: Email of the user
+*              password: 
+*                type: string 
+*                required: true
+*                description: Password of the user
+*/
+
+/**
+ * @swagger
+ * 
+ * /user/register:
+ *   post:
+ *     summary: Create a user
+ *     tags: [Register]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UserModel'
+ *     responses:
+ *       200:
+ *         description: User created 
+ *         contens:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserModel'
+ *       400:
+ *         description: User Already Exist
+ * 
+ * /user/login:
+ *   post:
+ *     summary: Login API
+ *     tags: [Login]
+ *     requestBody:
+ *       required: true
+ *       content: 
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UserModel'
+ *     responses:
+ *       200:
+ *         description: User Logedin
+ *         contens:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UserModel'
+ *       400:
+ *         description: User Already Exist        
+ *  
+ *       
+ */
+
+//api endpoint
 const express = require('express');
 const bcrypt = require('bcrypt');
 const { UserModel } = require('../models/UserModel');
