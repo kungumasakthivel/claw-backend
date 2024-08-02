@@ -18,6 +18,7 @@ POST method
 
 Using this format we can able to pass the data to this endpoint.
 
+
 ```json
 {
   "message": "user created successfully",
@@ -46,6 +47,7 @@ This will be the responce we an user created successfully.
 Using this format we can pass data to login endpoint
 
 With the API responce we recieve an JWT token to make future authentication we can get use of this JWT token.
+
 
 ```json
 {
